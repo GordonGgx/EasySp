@@ -1,0 +1,1 @@
+include ':app', ':sharepreference', ':annotations', ':compiler'
