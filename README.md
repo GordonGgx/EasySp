@@ -1,6 +1,19 @@
 # EasySp
 Just a simple SharePreference operation
 
+### add dependencies 
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+dependencies {
+	        compile 'com.github.guanguoxiang:EasySp:1.0'
+	}
+```
+
 ### Step1
 创建一个普通的Java Bean,使用`@SharePreference @StringKey @IntKey @BooleanKey @FloatKey @LongKey`.
 ```
