@@ -2,7 +2,7 @@
 Just a simple SharePreference operation
 
 ### Step1
-创建一个普通的Java Bean,使用`@SharePreference @StringKey @IntKey @BooleanKey`... etc.
+创建一个普通的Java Bean,使用`@SharePreference @StringKey @IntKey @BooleanKey @FloatKey @LongKey`.
 ```
 @SharePreference
 public class Cat {
