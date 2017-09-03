@@ -9,7 +9,7 @@ import com.ggx.annotation.StringKey;
  * @author jerry.Guan
  *         created by 2017/9/3
  */
-@SharePreference(name = "person")
+@SharePreference
 public class Person {
 
     @StringKey(name = "sp_name")

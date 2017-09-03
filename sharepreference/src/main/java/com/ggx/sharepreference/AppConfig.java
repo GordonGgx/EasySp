@@ -1,6 +1,5 @@
 package com.ggx.sharepreference;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 
 import java.lang.reflect.Constructor;
@@ -15,23 +14,18 @@ import java.util.Map;
 
 public class AppConfig {
 
-
-    private static Context mContext;
     private static final Map<String, Inject> binderMap = new LinkedHashMap<>();//管理保持管理者Map集合
 
-    public static void init(Context context){
-        mContext=context;
-    }
     @SuppressWarnings("unchecked")
-    public static <T>T create(Class<T> clazz) {
+    public static <T>T create(Context context,Class<T> clazz) {
         String fullName=clazz.getName();
         Inject<T> inject=binderMap.get(fullName);
         if(inject==null){
             try {
-                SpManager manager=SpManager.getManager(mContext,clazz.getCanonicalName());
                 Class<?> cla=Class.forName(clazz.getName()+"$$InjectSp");
-                Constructor<Inject> con= (Constructor<Inject>) cla.getConstructor(SpManager.class);
-                inject=con.newInstance(manager);
+                Constructor<Inject> con= (Constructor<Inject>) cla.getConstructor(Context.class);
+                inject=con.newInstance(context);
+                binderMap.put(clazz.getName(),inject);
             } catch (ClassNotFoundException | NoSuchMethodException
                     | IllegalAccessException | InstantiationException
                     | InvocationTargetException e) {
@@ -47,7 +41,7 @@ public class AppConfig {
     }
 
     public static boolean save(Class<?> o) {
-        String fullName = o.getClass().getName();
+        String fullName = o.getName();
         Inject<?> inject = binderMap.get(fullName);
         return inject != null && inject.save();
     }

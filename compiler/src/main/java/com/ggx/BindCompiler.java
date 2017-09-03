@@ -39,7 +39,7 @@ import javax.lang.model.util.Elements;
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 @AutoService(Processor.class)
 public class BindCompiler extends AbstractProcessor{
-
+    private static final ClassName CONTEXT=ClassName.get("android.content","Context");
     private static final ClassName INJECT=ClassName.get("com.ggx.sharepreference","Inject");
     private static final ClassName SP_MANAGER=ClassName.get("com.ggx.sharepreference","SpManager");
     private static final ClassName SP_MANAGER_EDITOR=ClassName.get("android.content.SharedPreferences","Editor");
@@ -80,7 +80,7 @@ public class BindCompiler extends AbstractProcessor{
      * create a Inject class
      * <code>
      * public class Person$$Inject extends Inject<Person> {
-     *   public Person$$Inject(SpManager manager) {
+     *   public Person$$Inject(Context context) {
      *      super(manager);
      *   }
      *
@@ -103,20 +103,27 @@ public class BindCompiler extends AbstractProcessor{
         TypeSpec.Builder injectType=TypeSpec.classBuilder(className+"$$InjectSp")
                 .addModifiers(Modifier.PUBLIC)
                 .superclass(ParameterizedTypeName.get(INJECT,ClassName.get(typeElement.asType())));
-        for (Element e:typeElement.getEnclosedElements()){
-            System.out.println(e.getSimpleName());
+        SharePreference sp=typeElement.getAnnotation(SharePreference.class);
+        String spName=sp.name();
+        if(isEmpty(spName)){
+            spName=typeElement.asType().toString();
         }
+        //get all elements with current class
+//        for (Element e:typeElement.getEnclosedElements()){
+//            System.out.println(e.getSimpleName());
+//        }
         //add constructor
         MethodSpec.Builder constructor=MethodSpec.constructorBuilder()
                 .addModifiers(Modifier.PUBLIC)
-                .addParameter(SP_MANAGER,"manager")
-                .addStatement("super(manager)");
+                .addParameter(CONTEXT,"context")
+                .addStatement("super($N.getManager(context,$S))","com.ggx.sharepreference.SpManager",spName);
         injectType.addMethod(constructor.build());
         injectType.addMethod(getReadMethod(typeElement,roundEnv));
         injectType.addMethod(getEditorMathod(typeElement,roundEnv));
 
         String packageName=elementsUtil.getPackageOf(typeElement).getQualifiedName().toString();
-        return JavaFile.builder(packageName,injectType.build()).build();
+        return JavaFile.builder(packageName,injectType.build())
+                .build();
     }
 
     private static String captureName(String name) {
@@ -278,7 +285,7 @@ public class BindCompiler extends AbstractProcessor{
                 spKey=name;
             }
             if(element.getModifiers().contains(Modifier.PRIVATE)){
-                editorMethod.addStatement("editor.putInt($S,obj.get$S())",
+                editorMethod.addStatement("editor.putInt($S,obj.get$N())",
                         spKey,captureName(simpleName));
             }else {
                 editorMethod.addStatement("editor.putInt($S,obj.$N)",
