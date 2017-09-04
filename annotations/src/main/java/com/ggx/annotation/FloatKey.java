@@ -14,6 +14,6 @@ import java.lang.annotation.Target;
 public @interface FloatKey {
 
     String name() default "";
-    float value() default 0;
+    float value() default 0f;
 
 }

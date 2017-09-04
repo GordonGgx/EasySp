@@ -1,6 +1,8 @@
 # EasySp
 Just a simple SharePreference operation
 
+[![](https://jitpack.io/v/guanguoxiang/EasySp.svg)](https://jitpack.io/#guanguoxiang/EasySp)
+
 ### add dependencies 
 ```
 allprojects {
@@ -10,8 +12,10 @@ allprojects {
     }
 }
 dependencies {
-	        compile 'com.github.guanguoxiang:EasySp:1.0'
-	}
+	compile 'com.github.guanguoxiang.EasySp:annotations:1.0.1'
+	compile 'com.github.guanguoxiang.EasySp:sharepreference:1.0.1'
+	annotationProcessor 'com.github.guanguoxiang.EasySp:compiler:1.0.1'
+}
 ```
 
 ### Step1

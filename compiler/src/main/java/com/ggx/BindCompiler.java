@@ -227,10 +227,10 @@ public class BindCompiler extends AbstractProcessor{
                 spKey=name;
             }
             if(element.getModifiers().contains(Modifier.PRIVATE)){
-                readMethod.addStatement("obj.set$N(manager.getFloat($S,$L))",
+                readMethod.addStatement("obj.set$N(manager.getFloat($S,$Lf))",
                         captureName(simpleName),spKey,value);
             }else {
-                readMethod.addStatement("obj.$N=manager.getFloat($S,$L)",
+                readMethod.addStatement("obj.$N=manager.getFloat($S,$Lf)",
                         simpleName,spKey,value);
             }
         }
