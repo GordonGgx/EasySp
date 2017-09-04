@@ -23,7 +23,6 @@ public class Cat {
     @BooleanKey
     private boolean healthy;
 
-    @FloatKey
     private float weight;
 
     private int sex;
