@@ -1,6 +1,7 @@
 package com.ggx.easysp;
 
 import com.ggx.annotation.BooleanKey;
+import com.ggx.annotation.FloatKey;
 import com.ggx.annotation.IntKey;
 import com.ggx.annotation.SharePreference;
 import com.ggx.annotation.StringKey;
@@ -20,6 +21,9 @@ public class Cat {
 
     @BooleanKey
     private boolean healthy;
+
+    @FloatKey
+    private float weight;
 
     public String getName() {
         return name;
@@ -43,5 +47,13 @@ public class Cat {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public float getWeight() {
+        return weight;
+    }
+
+    public void setWeight(float weight) {
+        this.weight = weight;
     }
 }

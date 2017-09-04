@@ -29,8 +29,11 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
-    compile project(':sharepreference')
-    compile project(':annotations')
-    annotationProcessor project(':compiler')
+//    compile project(':sharepreference')
+//    compile project(':annotations')
+//    annotationProcessor project(':compiler')
+    compile 'com.github.guanguoxiang.EasySp:annotations:1.1'
+    compile 'com.github.guanguoxiang.EasySp:sharepreference:1.1'
+    annotationProcessor 'com.github.guanguoxiang.EasySp:compiler:1.1'
     testCompile 'junit:junit:4.12'
 }
