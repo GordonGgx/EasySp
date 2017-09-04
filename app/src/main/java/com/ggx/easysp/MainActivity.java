@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cat.setAge(50);
+                cat.setAge(50f);
                 //保存Cat数据
                 boolean result=AppConfig.save(Cat.class);
                 Toast.makeText(MainActivity.this,result?"保存成功":"保存失败",Toast.LENGTH_SHORT).show();

@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * @author jerry.Guan
  *         created by 2017/9/2
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
 public @interface IntKey {
     String name() default "";

@@ -5,6 +5,7 @@ import com.ggx.annotation.FloatKey;
 import com.ggx.annotation.IntKey;
 import com.ggx.annotation.SharePreference;
 import com.ggx.annotation.StringKey;
+import com.ggx.annotation.Transient;
 
 /**
  * @author jerry.Guan
@@ -17,13 +18,34 @@ public class Cat {
     private String name;
 
     @IntKey(name = "sp_age",value = 5)
-    private int age;
+    private Float age;
 
     @BooleanKey
     private boolean healthy;
 
     @FloatKey
     private float weight;
+
+    private int sex;
+
+    @Transient
+    private Boolean hury;
+
+    public Boolean getHury() {
+        return hury;
+    }
+
+    public void setHury(Boolean hury) {
+        this.hury = hury;
+    }
+
+    public int getSex() {
+        return sex;
+    }
+
+    public void setSex(int sex) {
+        this.sex = sex;
+    }
 
     public String getName() {
         return name;
@@ -41,11 +63,11 @@ public class Cat {
         this.healthy = healthy;
     }
 
-    public int getAge() {
+    public Float getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Float age) {
         this.age = age;
     }
 
