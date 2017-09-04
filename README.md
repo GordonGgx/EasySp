@@ -12,9 +12,9 @@ allprojects {
     }
 }
 dependencies {
-	compile 'com.github.guanguoxiang.EasySp:annotations:1.0.1'
-	compile 'com.github.guanguoxiang.EasySp:sharepreference:1.0.1'
-	annotationProcessor 'com.github.guanguoxiang.EasySp:compiler:1.0.1'
+	compile 'com.github.guanguoxiang.EasySp:annotations:1.0.2'
+	compile 'com.github.guanguoxiang.EasySp:sharepreference:1.0.2'
+	annotationProcessor 'com.github.guanguoxiang.EasySp:compiler:1.0.2'
 }
 ```
 
