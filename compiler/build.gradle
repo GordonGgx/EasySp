@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.guanguoxiang'
-project.archivesBaseName="archive-compiler"
+project.archivesBaseName="compiler"
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.google.auto.service:auto-service:1.0-rc2'

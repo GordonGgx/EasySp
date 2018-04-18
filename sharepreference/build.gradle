@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.guanguoxiang'
-project.archivesBaseName="archive-SharePreference"
+project.archivesBaseName="SharePreference"
 android {
     compileSdkVersion 26
     buildToolsVersion "27.0.3"
