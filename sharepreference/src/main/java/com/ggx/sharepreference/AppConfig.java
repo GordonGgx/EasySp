@@ -1,5 +1,6 @@
 package com.ggx.sharepreference;
 
+import android.app.Application;
 import android.content.Context;
 
 import java.lang.reflect.Constructor;
@@ -18,6 +19,9 @@ public class AppConfig {
 
     @SuppressWarnings("unchecked")
     public static <T>T create(Context context,Class<T> clazz) {
+        if(!(context instanceof Application)){
+            throw new RuntimeException("the context must be ApplicationContext");
+        }
         String fullName=clazz.getName();
         Inject<T> inject=binderMap.get(fullName);
         if(inject==null){
