@@ -1,12 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 26
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.ggx.easysp"
         minSdkVersion 19
-        targetSdkVersion 25
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -23,17 +23,17 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
-//    compile project(':sharepreference')
-//    compile project(':annotations')
-//    annotationProcessor project(':compiler')
-    compile 'com.github.guanguoxiang.EasySp:Annotations:1.0.2'
-    compile 'com.github.guanguoxiang.EasySp:SharePreference:1.0.2'
-    annotationProcessor 'com.github.guanguoxiang.EasySp:Compiler:1.0.2'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    implementation project(':sharepreference')
+    implementation project(':annotations')
+    annotationProcessor project(':compiler')
+//    implementation 'com.github.guanguoxiang.EasySp:Annotations:1.0.2'
+//    implementation 'com.github.guanguoxiang.EasySp:SharePreference:1.0.2'
+//    annotationProcessor 'com.github.guanguoxiang.EasySp:Compiler:1.0.2'
+    testImplementation 'junit:junit:4.12'
 }

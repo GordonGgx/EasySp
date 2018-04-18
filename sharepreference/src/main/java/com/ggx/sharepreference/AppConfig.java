@@ -26,23 +26,26 @@ public class AppConfig {
                 Constructor<Inject> con= (Constructor<Inject>) cla.getConstructor(Context.class);
                 inject=con.newInstance(context);
                 binderMap.put(clazz.getName(),inject);
+                return inject.readObj(clazz.newInstance());
             } catch (ClassNotFoundException | NoSuchMethodException
                     | IllegalAccessException | InstantiationException
                     | InvocationTargetException e) {
                 e.printStackTrace();
+                return null;
             }
         }
-        try {
-            return inject!=null? inject.readObj(clazz.newInstance()) :null;
-        } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return inject.get();
     }
 
-    public static boolean save(Class<?> o) {
-        String fullName = o.getName();
-        Inject<?> inject = binderMap.get(fullName);
-        return inject != null && inject.save();
+    public static boolean save(Object obj) {
+        String fullName = obj.getClass().getName();
+        if(binderMap.containsKey(fullName)){
+            Inject<?> inject = binderMap.get(fullName);
+            binderMap.remove(fullName);
+            binderMap.put(fullName,inject);
+            return inject.save(obj);
+        }else {
+            throw new RuntimeException("未发现"+obj.getClass().getName());
+        }
     }
 }

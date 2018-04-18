@@ -4,7 +4,7 @@ group='com.github.guanguoxiang'
 project.archivesBaseName="archive-Annotations"
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 sourceCompatibility = "1.7"
