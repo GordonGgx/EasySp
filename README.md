@@ -12,9 +12,9 @@ allprojects {
     }
 }
 dependencies {
-    compile 'com.github.guanguoxiang.EasySp:Annotations:1.0.2'
-    compile 'com.github.guanguoxiang.EasySp:SharePreference:1.0.2'
-    annotationProcessor 'com.github.guanguoxiang.EasySp:Compiler:1.0.2'
+    compile 'com.github.guanguoxiang.EasySp:annotations:1.0.6'
+    compile 'com.github.guanguoxiang.EasySp:SharePreference:1.0.6'
+    annotationProcessor 'com.github.guanguoxiang.EasySp:compiler:1.0.6'
 }
 ```
 
@@ -105,5 +105,5 @@ cat.getAge();
 保存数据只需要调用AppConfig类的save方法即可：
 ```
 //保存Cat数据
-boolean result=AppConfig.save(Cat.class);
+boolean result=AppConfig.save(cat);
 ```
