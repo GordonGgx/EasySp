@@ -11,3 +11,13 @@ dependencies {
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            pom.groupId = group
+            pom.artifactId = "compiler"
+        }
+    }
+}

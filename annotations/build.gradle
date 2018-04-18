@@ -1,7 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.guanguoxiang'
-project.archivesBaseName="archive-Annotations"
+project.archivesBaseName="archive-annotations"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -9,3 +9,13 @@ dependencies {
 
 sourceCompatibility = "1.7"
 targetCompatibility = "1.7"
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            pom.groupId = group
+            pom.artifactId = "annotations"
+        }
+    }
+}
